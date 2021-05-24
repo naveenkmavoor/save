@@ -1,7 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:http/http.dart' as http;
 
 class MyAppBar extends StatefulWidget implements PreferredSizeWidget {
   Size get preferredSize => new Size.fromHeight(68);
@@ -10,11 +9,7 @@ class MyAppBar extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _MyAppBarState extends State<MyAppBar> {
-  @override
-  void initState() {
-    fetchfromserver();
-    super.initState();
-  }
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -41,10 +36,3 @@ class _MyAppBarState extends State<MyAppBar> {
   }
 }
 
-Future<Map<String, dynamic>> fetchfromserver() async {
-  var url = Uri.parse("http://localhost:8083/case");
-  var response = await http.get(url);
-  if (response.statusCode == 200) {
-    print(response.body);
-  }
-}
